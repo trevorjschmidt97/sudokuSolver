@@ -11,8 +11,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity{
-    // 9x9 suduko grid
-    private Integer[][] grid;
+    // 9x9 sudoko grid
+    private Integer[][] sudokuGrid = {
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
     //all text fields of the app
     private EditText cell11;
@@ -214,7 +223,7 @@ public class MainActivity extends AppCompatActivity{
         //Reset entire cTable
         for (int i = 0; i < 9; ++i) {
             for (int j = 0; j < 9; ++j) {
-                grid[i][j] = 0;
+                sudokuGrid[i][j] = 0;
             }
         }
          //Set all values in the grid
@@ -228,14 +237,14 @@ public class MainActivity extends AppCompatActivity{
     private boolean recurse() {
         for (int i = 0; i < 9; ++i) {
             for (int j = 0; j < 9; ++j) {
-                if (grid[i][j] == 0) {
+                if (sudokuGrid[i][j] == 0) {
                     for (int k = 1; k < 10; ++k) {
                         if (check(i, j, k)) {
-                            grid[i][j] = k;
+                            sudokuGrid[i][j] = k;
                             if (recurse()) {
                                 return true;
                             }
-                            grid[i][j] = 0;
+                            sudokuGrid[i][j] = 0;
                         }
                     }
                     return false;
@@ -247,10 +256,10 @@ public class MainActivity extends AppCompatActivity{
 
     private boolean check(int y, int x, int n) {
         for (int i = 0; i < 9; ++i) {
-            if (grid[y][i] == n) {
+            if (sudokuGrid[y][i] == n) {
                 return false;
             }
-            if (grid[i][x] == n) {
+            if (sudokuGrid[i][x] == n) {
                 return false;
             }
         }
@@ -260,7 +269,7 @@ public class MainActivity extends AppCompatActivity{
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
-                if (grid[y0 + i][x0 + j] == n) {
+                if (sudokuGrid[y0 + i][x0 + j] == n) {
                     return false;
                 }
             }
@@ -535,7 +544,7 @@ public class MainActivity extends AppCompatActivity{
     private void clearEditTexts() {
         for (int i = 0; i < 9; ++i) {
             for (int j = 0; j < 9; ++j) {
-                grid[i][j] = 0;
+                sudokuGrid[i][j] = 0;
             }
         }
 
@@ -707,339 +716,339 @@ public class MainActivity extends AppCompatActivity{
 
     private void setGridValues() {
         if (!cell11Val.equals("")) {
-            grid[0][0] = Integer.valueOf(cell11Val);
+            sudokuGrid[0][0] = Integer.valueOf(cell11Val);
         }
         if (!cell12Val.equals("")) {
-            grid[0][1] = Integer.valueOf(cell12Val);
+            sudokuGrid[0][1] = Integer.valueOf(cell12Val);
         }
         if (!cell13Val.equals("")) {
-            grid[0][2] = Integer.valueOf(cell13Val);
+            sudokuGrid[0][2] = Integer.valueOf(cell13Val);
         }
         if (!cell14Val.equals("")) {
-            grid[0][3] = Integer.valueOf(cell14Val);
+            sudokuGrid[0][3] = Integer.valueOf(cell14Val);
         }
         if (!cell15Val.equals("")) {
-            grid[0][4] = Integer.valueOf(cell15Val);
+            sudokuGrid[0][4] = Integer.valueOf(cell15Val);
         }
         if (!cell16Val.equals("")) {
-            grid[0][5] = Integer.valueOf(cell16Val);
+            sudokuGrid[0][5] = Integer.valueOf(cell16Val);
         }
         if (!cell17Val.equals("")) {
-            grid[0][6] = Integer.valueOf(cell17Val);
+            sudokuGrid[0][6] = Integer.valueOf(cell17Val);
         }
         if (!cell18Val.equals("")) {
-            grid[0][7] = Integer.valueOf(cell18Val);
+            sudokuGrid[0][7] = Integer.valueOf(cell18Val);
         }
         if (!cell19Val.equals("")) {
-            grid[0][8] = Integer.valueOf(cell19Val);
+            sudokuGrid[0][8] = Integer.valueOf(cell19Val);
         }
 
         if (!cell21Val.equals("")) {
-            grid[1][0] = Integer.valueOf(cell21Val);
+            sudokuGrid[1][0] = Integer.valueOf(cell21Val);
         }
         if (!cell22Val.equals("")) {
-            grid[1][1] = Integer.valueOf(cell22Val);
+            sudokuGrid[1][1] = Integer.valueOf(cell22Val);
         }
         if (!cell23Val.equals("")) {
-            grid[1][2] = Integer.valueOf(cell23Val);
+            sudokuGrid[1][2] = Integer.valueOf(cell23Val);
         }
         if (!cell24Val.equals("")) {
-            grid[1][3] = Integer.valueOf(cell24Val);
+            sudokuGrid[1][3] = Integer.valueOf(cell24Val);
         }
         if (!cell25Val.equals("")) {
-            grid[1][4] = Integer.valueOf(cell25Val);
+            sudokuGrid[1][4] = Integer.valueOf(cell25Val);
         }
         if (!cell26Val.equals("")) {
-            grid[1][5] = Integer.valueOf(cell26Val);
+            sudokuGrid[1][5] = Integer.valueOf(cell26Val);
         }
         if (!cell27Val.equals("")) {
-            grid[1][6] = Integer.valueOf(cell27Val);
+            sudokuGrid[1][6] = Integer.valueOf(cell27Val);
         }
         if (!cell28Val.equals("")) {
-            grid[1][7] = Integer.valueOf(cell28Val);
+            sudokuGrid[1][7] = Integer.valueOf(cell28Val);
         }
         if (!cell29Val.equals("")) {
-            grid[1][8] = Integer.valueOf(cell29Val);
+            sudokuGrid[1][8] = Integer.valueOf(cell29Val);
         }
 
         if (!cell31Val.equals("")) {
-            grid[2][0] = Integer.valueOf(cell31Val);
+            sudokuGrid[2][0] = Integer.valueOf(cell31Val);
         }
         if (!cell32Val.equals("")) {
-            grid[2][1] = Integer.valueOf(cell32Val);
+            sudokuGrid[2][1] = Integer.valueOf(cell32Val);
         }
         if (!cell33Val.equals("")) {
-            grid[2][2] = Integer.valueOf(cell33Val);
+            sudokuGrid[2][2] = Integer.valueOf(cell33Val);
         }
         if (!cell34Val.equals("")) {
-            grid[2][3] = Integer.valueOf(cell34Val);
+            sudokuGrid[2][3] = Integer.valueOf(cell34Val);
         }
         if (!cell35Val.equals("")) {
-            grid[2][4] = Integer.valueOf(cell35Val);
+            sudokuGrid[2][4] = Integer.valueOf(cell35Val);
         }
         if (!cell36Val.equals("")) {
-            grid[2][5] = Integer.valueOf(cell36Val);
+            sudokuGrid[2][5] = Integer.valueOf(cell36Val);
         }
         if (!cell37Val.equals("")) {
-            grid[2][6] = Integer.valueOf(cell37Val);
+            sudokuGrid[2][6] = Integer.valueOf(cell37Val);
         }
         if (!cell38Val.equals("")) {
-            grid[2][7] = Integer.valueOf(cell38Val);
+            sudokuGrid[2][7] = Integer.valueOf(cell38Val);
         }
         if (!cell39Val.equals("")) {
-            grid[2][8] = Integer.valueOf(cell39Val);
+            sudokuGrid[2][8] = Integer.valueOf(cell39Val);
         }
 
         if (!cell41Val.equals("")) {
-            grid[3][0] = Integer.valueOf(cell41Val);
+            sudokuGrid[3][0] = Integer.valueOf(cell41Val);
         }
         if (!cell42Val.equals("")) {
-            grid[3][1] = Integer.valueOf(cell42Val);
+            sudokuGrid[3][1] = Integer.valueOf(cell42Val);
         }
         if (!cell43Val.equals("")) {
-            grid[3][2] = Integer.valueOf(cell43Val);
+            sudokuGrid[3][2] = Integer.valueOf(cell43Val);
         }
         if (!cell44Val.equals("")) {
-            grid[3][3] = Integer.valueOf(cell44Val);
+            sudokuGrid[3][3] = Integer.valueOf(cell44Val);
         }
         if (!cell45Val.equals("")) {
-            grid[3][4] = Integer.valueOf(cell45Val);
+            sudokuGrid[3][4] = Integer.valueOf(cell45Val);
         }
         if (!cell46Val.equals("")) {
-            grid[3][5] = Integer.valueOf(cell46Val);
+            sudokuGrid[3][5] = Integer.valueOf(cell46Val);
         }
         if (!cell47Val.equals("")) {
-            grid[3][6] = Integer.valueOf(cell47Val);
+            sudokuGrid[3][6] = Integer.valueOf(cell47Val);
         }
         if (!cell48Val.equals("")) {
-            grid[3][7] = Integer.valueOf(cell48Val);
+            sudokuGrid[3][7] = Integer.valueOf(cell48Val);
         }
         if (!cell49Val.equals("")) {
-            grid[3][8] = Integer.valueOf(cell49Val);
+            sudokuGrid[3][8] = Integer.valueOf(cell49Val);
         }
 
         if (!cell51Val.equals("")) {
-            grid[4][0] = Integer.valueOf(cell51Val);
+            sudokuGrid[4][0] = Integer.valueOf(cell51Val);
         }
         if (!cell52Val.equals("")) {
-            grid[4][1] = Integer.valueOf(cell52Val);
+            sudokuGrid[4][1] = Integer.valueOf(cell52Val);
         }
         if (!cell53Val.equals("")) {
-            grid[4][2] = Integer.valueOf(cell53Val);
+            sudokuGrid[4][2] = Integer.valueOf(cell53Val);
         }
         if (!cell54Val.equals("")) {
-            grid[4][3] = Integer.valueOf(cell54Val);
+            sudokuGrid[4][3] = Integer.valueOf(cell54Val);
         }
         if (!cell55Val.equals("")) {
-            grid[4][4] = Integer.valueOf(cell55Val);
+            sudokuGrid[4][4] = Integer.valueOf(cell55Val);
         }
         if (!cell56Val.equals("")) {
-            grid[4][5] = Integer.valueOf(cell56Val);
+            sudokuGrid[4][5] = Integer.valueOf(cell56Val);
         }
         if (!cell57Val.equals("")) {
-            grid[4][6] = Integer.valueOf(cell57Val);
+            sudokuGrid[4][6] = Integer.valueOf(cell57Val);
         }
         if (!cell58Val.equals("")) {
-            grid[4][7] = Integer.valueOf(cell58Val);
+            sudokuGrid[4][7] = Integer.valueOf(cell58Val);
         }
         if (!cell59Val.equals("")) {
-            grid[4][8] = Integer.valueOf(cell59Val);
+            sudokuGrid[4][8] = Integer.valueOf(cell59Val);
         }
 
         if (!cell61Val.equals("")) {
-            grid[5][0] = Integer.valueOf(cell61Val);
+            sudokuGrid[5][0] = Integer.valueOf(cell61Val);
         }
         if (!cell62Val.equals("")) {
-            grid[5][1] = Integer.valueOf(cell62Val);
+            sudokuGrid[5][1] = Integer.valueOf(cell62Val);
         }
         if (!cell63Val.equals("")) {
-            grid[5][2] = Integer.valueOf(cell63Val);
+            sudokuGrid[5][2] = Integer.valueOf(cell63Val);
         }
         if (!cell64Val.equals("")) {
-            grid[5][3] = Integer.valueOf(cell64Val);
+            sudokuGrid[5][3] = Integer.valueOf(cell64Val);
         }
         if (!cell65Val.equals("")) {
-            grid[5][4] = Integer.valueOf(cell65Val);
+            sudokuGrid[5][4] = Integer.valueOf(cell65Val);
         }
         if (!cell66Val.equals("")) {
-            grid[5][5] = Integer.valueOf(cell66Val);
+            sudokuGrid[5][5] = Integer.valueOf(cell66Val);
         }
         if (!cell67Val.equals("")) {
-            grid[5][6] = Integer.valueOf(cell67Val);
+            sudokuGrid[5][6] = Integer.valueOf(cell67Val);
         }
         if (!cell68Val.equals("")) {
-            grid[5][7] = Integer.valueOf(cell68Val);
+            sudokuGrid[5][7] = Integer.valueOf(cell68Val);
         }
         if (!cell69Val.equals("")) {
-            grid[5][8] = Integer.valueOf(cell69Val);
+            sudokuGrid[5][8] = Integer.valueOf(cell69Val);
         }
 
         if (!cell71Val.equals("")) {
-            grid[6][0] = Integer.valueOf(cell71Val);
+            sudokuGrid[6][0] = Integer.valueOf(cell71Val);
         }
         if (!cell72Val.equals("")) {
-            grid[6][1] = Integer.valueOf(cell72Val);
+            sudokuGrid[6][1] = Integer.valueOf(cell72Val);
         }
         if (!cell73Val.equals("")) {
-            grid[6][2] = Integer.valueOf(cell73Val);
+            sudokuGrid[6][2] = Integer.valueOf(cell73Val);
         }
         if (!cell74Val.equals("")) {
-            grid[6][3] = Integer.valueOf(cell74Val);
+            sudokuGrid[6][3] = Integer.valueOf(cell74Val);
         }
         if (!cell75Val.equals("")) {
-            grid[6][4] = Integer.valueOf(cell75Val);
+            sudokuGrid[6][4] = Integer.valueOf(cell75Val);
         }
         if (!cell76Val.equals("")) {
-            grid[6][5] = Integer.valueOf(cell76Val);
+            sudokuGrid[6][5] = Integer.valueOf(cell76Val);
         }
         if (!cell77Val.equals("")) {
-            grid[6][6] = Integer.valueOf(cell77Val);
+            sudokuGrid[6][6] = Integer.valueOf(cell77Val);
         }
         if (!cell78Val.equals("")) {
-            grid[6][7] = Integer.valueOf(cell78Val);
+            sudokuGrid[6][7] = Integer.valueOf(cell78Val);
         }
         if (!cell79Val.equals("")) {
-            grid[6][8] = Integer.valueOf(cell79Val);
+            sudokuGrid[6][8] = Integer.valueOf(cell79Val);
         }
 
         if (!cell81Val.equals("")) {
-            grid[7][0] = Integer.valueOf(cell81Val);
+            sudokuGrid[7][0] = Integer.valueOf(cell81Val);
         }
         if (!cell82Val.equals("")) {
-            grid[7][1] = Integer.valueOf(cell82Val);
+            sudokuGrid[7][1] = Integer.valueOf(cell82Val);
         }
         if (!cell83Val.equals("")) {
-            grid[7][2] = Integer.valueOf(cell83Val);
+            sudokuGrid[7][2] = Integer.valueOf(cell83Val);
         }
         if (!cell84Val.equals("")) {
-            grid[7][3] = Integer.valueOf(cell84Val);
+            sudokuGrid[7][3] = Integer.valueOf(cell84Val);
         }
         if (!cell85Val.equals("")) {
-            grid[7][4] = Integer.valueOf(cell85Val);
+            sudokuGrid[7][4] = Integer.valueOf(cell85Val);
         }
         if (!cell86Val.equals("")) {
-            grid[7][5] = Integer.valueOf(cell86Val);
+            sudokuGrid[7][5] = Integer.valueOf(cell86Val);
         }
         if (!cell87Val.equals("")) {
-            grid[7][6] = Integer.valueOf(cell87Val);
+            sudokuGrid[7][6] = Integer.valueOf(cell87Val);
         }
         if (!cell88Val.equals("")) {
-            grid[7][7] = Integer.valueOf(cell88Val);
+            sudokuGrid[7][7] = Integer.valueOf(cell88Val);
         }
         if (!cell89Val.equals("")) {
-            grid[7][8] = Integer.valueOf(cell89Val);
+            sudokuGrid[7][8] = Integer.valueOf(cell89Val);
         }
 
         if (!cell91Val.equals("")) {
-            grid[8][0] = Integer.valueOf(cell91Val);
+            sudokuGrid[8][0] = Integer.valueOf(cell91Val);
         }
         if (!cell92Val.equals("")) {
-            grid[8][1] = Integer.valueOf(cell92Val);
+            sudokuGrid[8][1] = Integer.valueOf(cell92Val);
         }
         if (!cell93Val.equals("")) {
-            grid[8][2] = Integer.valueOf(cell93Val);
+            sudokuGrid[8][2] = Integer.valueOf(cell93Val);
         }
         if (!cell94Val.equals("")) {
-            grid[8][3] = Integer.valueOf(cell94Val);
+            sudokuGrid[8][3] = Integer.valueOf(cell94Val);
         }
         if (!cell95Val.equals("")) {
-            grid[8][4] = Integer.valueOf(cell95Val);
+            sudokuGrid[8][4] = Integer.valueOf(cell95Val);
         }
         if (!cell96Val.equals("")) {
-            grid[8][5] = Integer.valueOf(cell96Val);
+            sudokuGrid[8][5] = Integer.valueOf(cell96Val);
         }
         if (!cell97Val.equals("")) {
-            grid[8][6] = Integer.valueOf(cell97Val);
+            sudokuGrid[8][6] = Integer.valueOf(cell97Val);
         }
         if (!cell98Val.equals("")) {
-            grid[8][7] = Integer.valueOf(cell98Val);
+            sudokuGrid[8][7] = Integer.valueOf(cell98Val);
         }
         if (!cell99Val.equals("")) {
-            grid[8][8] = Integer.valueOf(cell99Val);
+            sudokuGrid[8][8] = Integer.valueOf(cell99Val);
         }
     }
 
     private void setEditTextValues() {
-        cell11.setText(String.valueOf(grid[0][0]));
-        cell12.setText(String.valueOf(grid[0][1]));
-        cell13.setText(String.valueOf(grid[0][2]));
-        cell14.setText(String.valueOf(grid[0][3]));
-        cell15.setText(String.valueOf(grid[0][4]));
-        cell16.setText(String.valueOf(grid[0][5]));
-        cell17.setText(String.valueOf(grid[0][6]));
-        cell18.setText(String.valueOf(grid[0][7]));
-        cell19.setText(String.valueOf(grid[0][8]));
-        cell21.setText(String.valueOf(grid[1][0]));
-        cell22.setText(String.valueOf(grid[1][1]));
-        cell23.setText(String.valueOf(grid[1][2]));
-        cell24.setText(String.valueOf(grid[1][3]));
-        cell25.setText(String.valueOf(grid[1][4]));
-        cell26.setText(String.valueOf(grid[1][5]));
-        cell27.setText(String.valueOf(grid[1][6]));
-        cell28.setText(String.valueOf(grid[1][7]));
-        cell29.setText(String.valueOf(grid[1][8]));
-        cell31.setText(String.valueOf(grid[2][0]));
-        cell32.setText(String.valueOf(grid[2][1]));
-        cell33.setText(String.valueOf(grid[2][2]));
-        cell34.setText(String.valueOf(grid[2][3]));
-        cell35.setText(String.valueOf(grid[2][4]));
-        cell36.setText(String.valueOf(grid[2][5]));
-        cell37.setText(String.valueOf(grid[2][6]));
-        cell38.setText(String.valueOf(grid[2][7]));
-        cell39.setText(String.valueOf(grid[2][8]));
-        cell41.setText(String.valueOf(grid[3][0]));
-        cell42.setText(String.valueOf(grid[3][1]));
-        cell43.setText(String.valueOf(grid[3][2]));
-        cell44.setText(String.valueOf(grid[3][3]));
-        cell45.setText(String.valueOf(grid[3][4]));
-        cell46.setText(String.valueOf(grid[3][5]));
-        cell47.setText(String.valueOf(grid[3][6]));
-        cell48.setText(String.valueOf(grid[3][7]));
-        cell49.setText(String.valueOf(grid[3][8]));
-        cell51.setText(String.valueOf(grid[4][0]));
-        cell52.setText(String.valueOf(grid[4][1]));
-        cell53.setText(String.valueOf(grid[4][2]));
-        cell54.setText(String.valueOf(grid[4][3]));
-        cell55.setText(String.valueOf(grid[4][4]));
-        cell56.setText(String.valueOf(grid[4][5]));
-        cell57.setText(String.valueOf(grid[4][6]));
-        cell58.setText(String.valueOf(grid[4][7]));
-        cell59.setText(String.valueOf(grid[4][8]));
-        cell61.setText(String.valueOf(grid[5][0]));
-        cell62.setText(String.valueOf(grid[5][1]));
-        cell63.setText(String.valueOf(grid[5][2]));
-        cell64.setText(String.valueOf(grid[5][3]));
-        cell65.setText(String.valueOf(grid[5][4]));
-        cell66.setText(String.valueOf(grid[5][5]));
-        cell67.setText(String.valueOf(grid[5][6]));
-        cell68.setText(String.valueOf(grid[5][7]));
-        cell69.setText(String.valueOf(grid[5][8]));
-        cell71.setText(String.valueOf(grid[6][0]));
-        cell72.setText(String.valueOf(grid[6][1]));
-        cell73.setText(String.valueOf(grid[6][2]));
-        cell74.setText(String.valueOf(grid[6][3]));
-        cell75.setText(String.valueOf(grid[6][4]));
-        cell76.setText(String.valueOf(grid[6][5]));
-        cell77.setText(String.valueOf(grid[6][6]));
-        cell78.setText(String.valueOf(grid[6][7]));
-        cell79.setText(String.valueOf(grid[6][8]));
-        cell81.setText(String.valueOf(grid[7][0]));
-        cell82.setText(String.valueOf(grid[7][1]));
-        cell83.setText(String.valueOf(grid[7][2]));
-        cell84.setText(String.valueOf(grid[7][3]));
-        cell85.setText(String.valueOf(grid[7][4]));
-        cell86.setText(String.valueOf(grid[7][5]));
-        cell87.setText(String.valueOf(grid[7][6]));
-        cell88.setText(String.valueOf(grid[7][7]));
-        cell89.setText(String.valueOf(grid[7][8]));
-        cell91.setText(String.valueOf(grid[8][0]));
-        cell92.setText(String.valueOf(grid[8][1]));
-        cell93.setText(String.valueOf(grid[8][2]));
-        cell94.setText(String.valueOf(grid[8][3]));
-        cell95.setText(String.valueOf(grid[8][4]));
-        cell96.setText(String.valueOf(grid[8][5]));
-        cell97.setText(String.valueOf(grid[8][6]));
-        cell98.setText(String.valueOf(grid[8][7]));
-        cell99.setText(String.valueOf(grid[8][8]));
+        cell11.setText(String.valueOf(sudokuGrid[0][0]));
+        cell12.setText(String.valueOf(sudokuGrid[0][1]));
+        cell13.setText(String.valueOf(sudokuGrid[0][2]));
+        cell14.setText(String.valueOf(sudokuGrid[0][3]));
+        cell15.setText(String.valueOf(sudokuGrid[0][4]));
+        cell16.setText(String.valueOf(sudokuGrid[0][5]));
+        cell17.setText(String.valueOf(sudokuGrid[0][6]));
+        cell18.setText(String.valueOf(sudokuGrid[0][7]));
+        cell19.setText(String.valueOf(sudokuGrid[0][8]));
+        cell21.setText(String.valueOf(sudokuGrid[1][0]));
+        cell22.setText(String.valueOf(sudokuGrid[1][1]));
+        cell23.setText(String.valueOf(sudokuGrid[1][2]));
+        cell24.setText(String.valueOf(sudokuGrid[1][3]));
+        cell25.setText(String.valueOf(sudokuGrid[1][4]));
+        cell26.setText(String.valueOf(sudokuGrid[1][5]));
+        cell27.setText(String.valueOf(sudokuGrid[1][6]));
+        cell28.setText(String.valueOf(sudokuGrid[1][7]));
+        cell29.setText(String.valueOf(sudokuGrid[1][8]));
+        cell31.setText(String.valueOf(sudokuGrid[2][0]));
+        cell32.setText(String.valueOf(sudokuGrid[2][1]));
+        cell33.setText(String.valueOf(sudokuGrid[2][2]));
+        cell34.setText(String.valueOf(sudokuGrid[2][3]));
+        cell35.setText(String.valueOf(sudokuGrid[2][4]));
+        cell36.setText(String.valueOf(sudokuGrid[2][5]));
+        cell37.setText(String.valueOf(sudokuGrid[2][6]));
+        cell38.setText(String.valueOf(sudokuGrid[2][7]));
+        cell39.setText(String.valueOf(sudokuGrid[2][8]));
+        cell41.setText(String.valueOf(sudokuGrid[3][0]));
+        cell42.setText(String.valueOf(sudokuGrid[3][1]));
+        cell43.setText(String.valueOf(sudokuGrid[3][2]));
+        cell44.setText(String.valueOf(sudokuGrid[3][3]));
+        cell45.setText(String.valueOf(sudokuGrid[3][4]));
+        cell46.setText(String.valueOf(sudokuGrid[3][5]));
+        cell47.setText(String.valueOf(sudokuGrid[3][6]));
+        cell48.setText(String.valueOf(sudokuGrid[3][7]));
+        cell49.setText(String.valueOf(sudokuGrid[3][8]));
+        cell51.setText(String.valueOf(sudokuGrid[4][0]));
+        cell52.setText(String.valueOf(sudokuGrid[4][1]));
+        cell53.setText(String.valueOf(sudokuGrid[4][2]));
+        cell54.setText(String.valueOf(sudokuGrid[4][3]));
+        cell55.setText(String.valueOf(sudokuGrid[4][4]));
+        cell56.setText(String.valueOf(sudokuGrid[4][5]));
+        cell57.setText(String.valueOf(sudokuGrid[4][6]));
+        cell58.setText(String.valueOf(sudokuGrid[4][7]));
+        cell59.setText(String.valueOf(sudokuGrid[4][8]));
+        cell61.setText(String.valueOf(sudokuGrid[5][0]));
+        cell62.setText(String.valueOf(sudokuGrid[5][1]));
+        cell63.setText(String.valueOf(sudokuGrid[5][2]));
+        cell64.setText(String.valueOf(sudokuGrid[5][3]));
+        cell65.setText(String.valueOf(sudokuGrid[5][4]));
+        cell66.setText(String.valueOf(sudokuGrid[5][5]));
+        cell67.setText(String.valueOf(sudokuGrid[5][6]));
+        cell68.setText(String.valueOf(sudokuGrid[5][7]));
+        cell69.setText(String.valueOf(sudokuGrid[5][8]));
+        cell71.setText(String.valueOf(sudokuGrid[6][0]));
+        cell72.setText(String.valueOf(sudokuGrid[6][1]));
+        cell73.setText(String.valueOf(sudokuGrid[6][2]));
+        cell74.setText(String.valueOf(sudokuGrid[6][3]));
+        cell75.setText(String.valueOf(sudokuGrid[6][4]));
+        cell76.setText(String.valueOf(sudokuGrid[6][5]));
+        cell77.setText(String.valueOf(sudokuGrid[6][6]));
+        cell78.setText(String.valueOf(sudokuGrid[6][7]));
+        cell79.setText(String.valueOf(sudokuGrid[6][8]));
+        cell81.setText(String.valueOf(sudokuGrid[7][0]));
+        cell82.setText(String.valueOf(sudokuGrid[7][1]));
+        cell83.setText(String.valueOf(sudokuGrid[7][2]));
+        cell84.setText(String.valueOf(sudokuGrid[7][3]));
+        cell85.setText(String.valueOf(sudokuGrid[7][4]));
+        cell86.setText(String.valueOf(sudokuGrid[7][5]));
+        cell87.setText(String.valueOf(sudokuGrid[7][6]));
+        cell88.setText(String.valueOf(sudokuGrid[7][7]));
+        cell89.setText(String.valueOf(sudokuGrid[7][8]));
+        cell91.setText(String.valueOf(sudokuGrid[8][0]));
+        cell92.setText(String.valueOf(sudokuGrid[8][1]));
+        cell93.setText(String.valueOf(sudokuGrid[8][2]));
+        cell94.setText(String.valueOf(sudokuGrid[8][3]));
+        cell95.setText(String.valueOf(sudokuGrid[8][4]));
+        cell96.setText(String.valueOf(sudokuGrid[8][5]));
+        cell97.setText(String.valueOf(sudokuGrid[8][6]));
+        cell98.setText(String.valueOf(sudokuGrid[8][7]));
+        cell99.setText(String.valueOf(sudokuGrid[8][8]));
     }
 }
